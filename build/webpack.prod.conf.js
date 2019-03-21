@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 'use strict';
 const path = require('path');
 const utils = require('./utils');
@@ -52,7 +53,26 @@ const webpackConfig = merge(baseWebpackConfig, {
             filename: "static/style/[name].css",
             chunkFilename: "static/style/[id].css"
           })
-    ]
+    ],
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                vendors: {
+                  name: `chunk-vendors`,
+                  test: /[\\/]node_modules[\\/]/,
+                  priority: -10,
+                  chunks: 'initial'
+                },
+                common: {
+                  name: `chunk-common`,
+                  minChunks: 2,
+                  priority: -20,
+                  chunks: 'initial',
+                  reuseExistingChunk: true
+                }
+              }
+        }
+    }
 
 });
 module.exports = webpackConfig

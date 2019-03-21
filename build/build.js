@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 'use strict';
 
 process.env.NODE_ENV = 'production';

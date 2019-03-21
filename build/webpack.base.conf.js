@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 'use strict';
 const path = require('path');
 const config = require('../config');
@@ -7,6 +8,10 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 const devMode = process.env.NODE_ENV !== 'production';
 // console.log(process.env.NODE_ENV);
+/**
+ * 
+ * @param  dir 转换路径
+ */
 function resolve(dir) {
     return path.join(__dirname, '..', dir);
 }
@@ -37,6 +42,12 @@ module.exports = {
                 loader: 'vue-loader',
                 
             },
+            {
+                enforce: "pre",
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: "eslint-loader"
+              },
             {
                 test: /\.js$/,
                 loader: 'babel-loader',

@@ -1,4 +1,5 @@
-'use strict';
+/* eslint-disable no-undef */
+// 'use strict';
 const utils = require('./utils');
 const webpack = require('webpack');
 const config = require('../config');
@@ -85,5 +86,8 @@ module.exports = new Promise((resolve, reject) => {
         resolve(devWebpackConfig)
       }
     })
-  })
+  });
+
+  
+
   

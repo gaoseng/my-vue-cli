@@ -2,12 +2,16 @@
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
     <!-- <router-view/> -->
-    hello I'm vue123
+    hello I'm vue12
     {{this.name}}
+    <my-com></my-com>
+    <Hello/>
   </div>
 </template>
 
 <script>
+import Hello from './components/hello.vue';
+console.log(Hello);
 export default {
   name: 'App',
   data() {
@@ -15,7 +19,13 @@ export default {
           name: 'gaosen'
       }
   },
+  components: {
+    'my-com': Hello,
+    Hello
+  }
 }
+
+
 </script>
 
 <style lang="less">
