@@ -11,38 +11,18 @@ new Vue({
   });
 
   
-
-
-  function Obj() {
-    this.name = name;
-    this.test = () => {
-      console.log(this)
+  var handler = {
+    has (target, key) {
+      console.log('sss'[0]);
+      if (key[0] === '_') {
+        return false;
+      }
+      return key in target;
     }
-  }
-  Obj.prototype.output = () => {
-    console.log(this);
-  }
-  const obj = new Obj();
-
-  console.log(obj);
-  console.log(obj.output());
-
-  var myObject = {
-    foo: 1,
-    bar: 2,
-    get baz() {
-      return this.foo + this.bar;
-    },
-    get ba() {
-      return this.foo + this.bar;
-    },
-  }
+  };
+  var target = { _prop: 'foo', prop: 'foo' };
+  var proxy = new Proxy(target, handler);
+  '_prop' in proxy // false
   
-  Reflect.get(myObject, 'foo') // 1
-  Reflect.get(myObject, 'bar') // 2
-  Reflect.get(myObject, 'baz') // 3
-  Reflect.get(myObject, 'ba') // 3
-  console.log(Reflect.get(myObject, 'foo'), // 1
-  Reflect.get(myObject, 'bar'), // 2
-  Reflect.get(myObject, 'baz'), // 3
-  Reflect.get(myObject, 'ba')); // 3)
+
+

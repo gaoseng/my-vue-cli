@@ -17,6 +17,7 @@ module.exports = {
     "rules": {
         "eqeqeq": 1,
         "no-console": 0,
+        "no-unused-vars": 0
         
     }
 };
